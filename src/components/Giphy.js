@@ -13,14 +13,24 @@ function Giphy() {
 	const indexOfLastItem = currentPage * itemsPerPage;
 	const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
+    // Current Items to map to screen
     const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+    // Example           data.slice(0, 25);
+    /* The slice() method returns a shallow copy of a portion of an array into a new array object selected from start to end (end not included) where start and end represent the index of items in that array. The original array will not be modified.*/
 
-	// page 1 item 1 - item 25
-	// page 2 item 26 - item 50
+	// page 1 item 1 - item 25  ==> In the array, this means index 0 to 24
+	// page 2 item 26 - item 50   ===> 25 to 49
 	// page 3 item 51 - item 75
 
     const pageSelected = (pageNumber) => {
         setCurrentPage(pageNumber);
+    }
+
+    const previousBtn = () => {
+        if (currentPage > 0) {
+            return setCurrentPage(currentPage - 1);
+        }
+        return;
     }
 
     // ------------------------------------------
@@ -64,6 +74,7 @@ function Giphy() {
             <Paginate currentPage={currentPage} itemsPerPage={itemsPerPage} totalItems={data.length}
             pageSelected={pageSelected}
             />
+            <button onClick={previousBtn}>Previous</button>
 			<div className='container gifs'>{renderGifs()}</div>
 		</div>
 	);
