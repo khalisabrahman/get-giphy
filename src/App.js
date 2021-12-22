@@ -1,13 +1,14 @@
 import logo from './logo.svg';
 import './styles/styles.css';
 import Giphy from './components/Giphy';
-import Navbar from './components/Navbar';
+import Navigation from './components/Navbar';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Giphy />
+      <Navigation />
+      {/* <Giphy /> */}
     </div>
   );
 }
